@@ -208,7 +208,7 @@
       <div class="row">
         <?php $сlients = $section->firstWhere('slug', 'сlients'); ?>
         <div class="col-lg-6 col-sm-4">
-          <h3 class="header-style text-blue display-1">{{ $сlients->title }}</h3><br>
+          <h3 class="header-style text-blue display-2">{{ $сlients->title }}</h3><br>
         </div>
         <div class="col-lg-6 col-sm-8">
           <br>

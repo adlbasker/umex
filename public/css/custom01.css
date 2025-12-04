@@ -60,6 +60,9 @@
 .display-1 {
   font-size: 80px;
 }
+.display-2 {
+  font-size: 60px;
+}
 .square {
   position: absolute;
   left: -25%;
