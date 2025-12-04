@@ -63,6 +63,11 @@
 .display-2 {
   font-size: 60px;
 }
+.advantages {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
 .square {
   position: absolute;
   left: -25%;
@@ -104,12 +109,9 @@ section.fullwidth {
   font-size: 300px;
   color: #f0c330;
 }
-
 .clients {
   padding: 100px 0 70px;
-  /*background-color: #f0c330;*/
   color: #000;
-  /*text-align: justify;*/
   z-index: 10;
 }
 

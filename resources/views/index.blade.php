@@ -192,7 +192,7 @@
     data-img-height="505">
 
     <!-- Advantages Section -->
-    <div class="text-content white-font">
+    <div class="text-content advantages white-font">
       <div class="container">
         <?php $advantages = $section->firstWhere('slug', 'advantages'); ?>
         @if ($advantages != NULL)
