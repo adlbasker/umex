@@ -12,7 +12,7 @@
 
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/color.css">
-  <link rel="stylesheet" href="/css/custom.css">
+  <link rel="stylesheet" href="/css/custom01.css">
   @yield('head')
 
   <?php echo $section_codes->firstWhere('slug', 'header-code')->content; ?>
