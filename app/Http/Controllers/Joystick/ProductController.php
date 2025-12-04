@@ -37,14 +37,14 @@ class ProductController extends Controller
     public function search(Request $request)
     {
         $text = trim(strip_tags($request->text));
-        $products_lang = ProductLang::search($text)->paginate(50);
+        $productsLang = ProductLang::search($text)->paginate(50);
         $modes = Mode::all();
 
-        $products_lang->appends([
+        $productsLang->appends([
             'text' => $request->text,
         ]);
 
-        return view('joystick.products.found', compact('text', 'modes', 'products_lang'));
+        return view('joystick.products.found', compact('text', 'modes', 'productsLang'));
     }
 
     public function priceForm()
@@ -360,7 +360,7 @@ class ProductController extends Controller
             Storage::deleteDirectory('img/products/'.$product->path);
         }
 
-        foreach ($product->products_lang as $productLang) {
+        foreach ($product->productsLang as $productLang) {
             $productLang->delete();
         }
 
