@@ -33,9 +33,10 @@
 </div>
 
 <?php
-  $type = $_GET['type'] ?? 0;
-  $typeOfPropertyId = $_GET['type_of_property'] ?? 0;
-  $roomsId = $_GET['rooms'] ?? 0;
+$type = $_GET['type'] ?? 0;
+$typeOfPropertyId = $_GET['type_of_property'] ?? 0;
+$roomsId = $_GET['rooms'] ?? 0;
+
 ?>
 
 <!-- Search -->
@@ -88,9 +89,11 @@
               <button type="submit" class="button">{{ __('Search') }}</button>
             </div>
           </div>
-          <div class="text-center">
-            <a href="/{{ $lang }}/i/catalog">{{ __('Reset') }}</a>
-          </div>
+          @if(!empty($_GET))
+            <div class="text-center">
+              <a href="/{{ $lang }}/i/catalog">{{ __('Reset') }}</a>
+            </div>
+          @endif
         </div>
       </form>
     </div>
