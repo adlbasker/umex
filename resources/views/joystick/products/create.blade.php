@@ -169,7 +169,7 @@
                 <?php foreach ($categories as $category) : ?>
                   <div class="radio">
                     <label>
-                      <input type="radio" name="category_id" value="{{ $category->id }}"> {{ $category->title }}
+                      <input type="radio" name="category_id" value="{{ $category->id }}" required> {{ $category->title }}
                     </label>
                   </div>
                 <?php endforeach; ?>

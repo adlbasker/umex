@@ -155,7 +155,7 @@
                 <input type="name" name="name" id="name" placeholder="{{ __('Your Name') }}" required>
                 <input type="surname" name="surname" id="surname" class="hidden" placeholder="{{ __('Your Surname') }}">
                 <input type="tel" pattern="(\+?\d[- .]*){7,13}" name="phone" minlength="5" maxlength="20" placeholder="{{ __('Your Phone') }}" required>
-                <textarea name="message" autocomplete="off" required>{{ __('Text form') }} {{ $productLang->product->barcode }}]</textarea>
+                <textarea name="message" autocomplete="off" required>{{ __('Text form') }} {{ $product->barcode }}]</textarea>
                 <button class="button fullwidth margin-top-5">{{ __('Send Message') }}</button>
               </form>
             </div>

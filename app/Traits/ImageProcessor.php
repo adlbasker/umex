@@ -46,7 +46,8 @@ trait ImageProcessor
 
         // 7. Сохранение (v3: качество передается в массиве опций)
         $frame->save(public_path() . $path, [
-            'quality' => $quality
+            'quality' => $quality,
+            'permissions' => 0644
         ]);
     }
 
@@ -78,7 +79,8 @@ trait ImageProcessor
         // dd(public_path().$path);
 
         $frame->save(public_path($path), [
-            'quality' => $quality
+            'quality' => $quality,
+            'permissions' => 0644
         ]);
         
         // Примечание: В v3 этот эффект (масштабирование для заполнения с последующей обрезкой)
