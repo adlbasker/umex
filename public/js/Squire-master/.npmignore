@@ -1,0 +1,12 @@
+source/
+test/
+Makefile
+.editorconfig
+.eslintrc.cjs
+.gitignore
+.gitlab-ci.yml
+babel.config.cjs
+Demo.html
+prettier.config.cjs
+rollup.config.js
+tsconfig.json

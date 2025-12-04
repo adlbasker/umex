@@ -1,0 +1,32 @@
+
+  @if (session('info'))role="alert">
+    <div class="alert alert-info alert-dissmisble">
+      {{ session('info') }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+  @endif
+
+  @if (session('warning'))
+    <div class="alert alert-warning alert-dissmisble">
+      {{ session('warning') }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+  @endif
+
+	@if (session('status'))
+	  <div class="alert alert-success alert-dissmisble">
+	    {{ session('status') }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  </div>
+	@endif
+
+  @if (count($errors) > 0)
+    <div class="alert alert-danger alert-dissmisble">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
