@@ -73,7 +73,7 @@
             @can('viewAny', App\Models\Option::class)<li @if(Request::is($lang.'/admin/options*')) class="active" @endif><a href="/{{ $lang }}/admin/options"><i class="material-icons md-20">label_outline</i> Опции</a></li>@endcan
             <?php $ordersCount = App\Models\Order::where('status', '!=', 3)->count(); ?>
             @can('viewAny', App\Models\Order::class)<li @if(Request::is($lang.'/admin/orders*')) class="active" @endif><a href="/{{ $lang }}/admin/orders"><i class="material-icons md-20">shopping_cart</i> Заказы <span class="badge">{{ $ordersCount }}</span></a></li>@endcan
-            @can('viewAny', App\Models\App::class)<li @if(Request::is($lang.'/admin/apps*')) class="active" @endif><a href="/{{ $lang }}/admin/apps"><i class="material-icons md-20">send</i> Заявки</a></li>@endcan
+            @can('viewAny', App\Models\App::class)<li @if(Request::is($lang.'/admin/apps*')) class="active" @endif><a href="/{{ $lang }}/admin/apps"><i class="material-icons md-20">send</i> Заявки <span class="badge">{{ App\Models\App::where('status', '!=', 2)->count() }}</span></a></li>@endcan
           </ul>
 
           <div class="btn-sidebar" role="button" data-toggle="collapse" href="#sidebarResources" aria-expanded="true" aria-controls="sidebarResources">Ресурсы <span class="caret"></span></div>
