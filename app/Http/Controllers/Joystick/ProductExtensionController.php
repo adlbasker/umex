@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Joystick;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 
 use DB;
-use Storage;
 
 use App\Http\Controllers\Joystick\Controller;
 use App\Models\Mode;

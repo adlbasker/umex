@@ -4,11 +4,10 @@ namespace App\Http\Controllers\Joystick;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facade\Storage;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Joystick\Controller;
 
 use App\Models\Banner;
-
 
 class BannerController extends Controller
 {

@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Joystick;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Joystick\Controller;
 use App\Models\Region;
 use App\Models\Company;
 use App\Models\Currency;
 
-use Storage;
 
 class CompanyController extends Controller
 {
