@@ -14,7 +14,7 @@
     <div class="col-md-9">
       <div class="panel panel-default">
         <div class="panel-body">
-          <form action="{{ route('pages.store', $lang) }}" method="post">
+          <form action="{{ route('pages.store', $lang) }}" method="post" id="postForm">
             {!! csrf_field() !!}
             <div class="form-group">
               <label for="title">Название</label>
@@ -137,5 +137,10 @@
       minHeight: '300px'
     });
     editor.setDefaultStyle('font-family: Arial; font-size: 15px;');
+
+    const form = document.getElementById('postForm');
+    form.addEventListener('submit', function() {
+        editor.save();
+    });
   </script>
 @endsection

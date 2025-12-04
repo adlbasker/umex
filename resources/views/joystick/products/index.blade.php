@@ -73,7 +73,7 @@
         @foreach($products as $product)
           <tr>
             <td><input type="checkbox" name="products_id[]" value="{{ $product->id }}" class="checkbox-ids"></td>
-            <td><img src="/img/products/{{ $product->path.'/'.$product->image }}" class="img-responsive" style="width:80px;height:auto;"></td>
+            <td><img src="/img/products/{{ ($product->image == 'no-image-middle.png') ? 'no-image-mini.png' : $product->path.'/'.$product->image }}" class="img-responsive" style="width:80px;height:auto;"></td>
             <td>
               @foreach ($product->productsLang as $productLang)
                 {{ $productLang->title }}<br>
@@ -100,7 +100,7 @@
             </td>
             <td class="text-info">{{ trans('statuses.data.'.$product->status.'.title') }}</td>
             <td class="text-right text-nowrap">
-              <!-- <a class="btn btn-link btn-xs" href="/p/{{ $product->slug }}" title="Просмотр товара" target="_blank"><i class="material-icons md-18">link</i></a> -->
+              <a class="btn btn-link btn-xs" href="/{{ $lang }}/p/{{ $product->slug }}" title="Просмотр товара" target="_blank"><i class="material-icons md-18">link</i></a>
               <a class="btn btn-link btn-xs" href="{{ route('products.edit', [$lang, $product->id]) }}" title="Редактировать"><i class="material-icons md-18">mode_edit</i></a>
               <form class="btn-delete" method="POST" action="{{ route('products.destroy', [$lang, $product->id]) }}" accept-charset="UTF-8">
                 <input name="_method" type="hidden" value="DELETE">

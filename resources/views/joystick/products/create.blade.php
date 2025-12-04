@@ -20,7 +20,7 @@
     </div>
   </div><br>
 
-  <form action="{{ route('products.store', $lang) }}" method="post" enctype="multipart/form-data">
+  <form action="{{ route('products.store', $lang) }}" method="post" id="postForm" enctype="multipart/form-data">
     {!! csrf_field() !!}
     <div class="row">
       <div class="col-md-7">
@@ -247,6 +247,12 @@
       minHeight: '300px'
     });
     editor.setDefaultStyle('font-family: Arial; font-size: 15px;');
+
+    const form = document.getElementById('postForm');
+
+    form.addEventListener('submit', function() {
+        editor.save();
+    });
   </script>
   <script>
     function addFileinput(i) {

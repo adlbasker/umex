@@ -21,7 +21,7 @@
     </div>
   </div><br>
 
-  <form action="/{{ $lang }}/admin/products/{{ $product->id }}" method="POST" enctype="multipart/form-data">
+  <form action="/{{ $lang }}/admin/products/{{ $product->id }}" method="POST" id="postForm" enctype="multipart/form-data">
     <input type="hidden" name="_method" value="PUT">
     {!! csrf_field() !!}
     <div class="row">
@@ -195,7 +195,7 @@
                 <?php foreach ($categories as $category) : ?>
                   <div class="radio">
                     <label>
-                      <input type="radio" name="category_id" value="{{ $category->id }}" <?php if ($productLang->category_id == $category->id) echo "checked"; ?>> {{ $category->title }}
+                      <input type="radio" name="category_id" value="{{ $category->id }}" <?php if ($productLang->category_id == $category->id) echo "checked"; ?> required> {{ $category->title }}
                     </label>
                   </div>
                 <?php endforeach; ?>
@@ -276,6 +276,12 @@
       minHeight: '300px'
     });
     editor.setDefaultStyle('font-family: Arial; font-size: 15px;');
+
+    const form = document.getElementById('postForm');
+
+    form.addEventListener('submit', function() {
+        editor.save();
+    });
   </script>
   <script>
     function addFileinput(i) {

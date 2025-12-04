@@ -46,8 +46,6 @@
       <div class="col-md-8">
         <!-- Blog Post -->
         <div itemscope itemtype="http://schema.org/Article" class="blog-post single-post">
-          <img itemprop="image" class="post-img" src="/img/posts/{{ $post->image }}" alt="{{ $post->title }}">
-
           <div class="post-content">
             <h2 itemprop="headline">{{ $post->title }}</h2>
 
@@ -75,9 +73,10 @@
               <form action="/{{ $lang }}/send-app" name="contact" method="post">
                 @csrf
                 <h3>{{ __('App form') }}</h3>
-                <input type="email" name="email" id="email" placeholder="{{ __('Your Email') }}" required>
+                <input type="name" name="name" id="name" placeholder="{{ __('Your Name') }}" required>
+                <input type="surname" name="surname" id="surname" class="hidden" placeholder="{{ __('Your Surname') }}">
                 <input type="tel" pattern="(\+?\d[- .]*){7,13}" name="phone" minlength="5" maxlength="20" placeholder="{{ __('Your Phone') }}" required>
-                <textarea name="message" autocomplete="off" required>{{ __('Your Message') }}</textarea>
+                <textarea name="message" autocomplete="off" required placeholder="{{ __('Your Message') }}"></textarea>
                 <button class="button fullwidth margin-top-5">{{ __('Send Message') }}</button>
               </form>
             </div>

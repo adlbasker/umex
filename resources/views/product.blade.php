@@ -102,7 +102,7 @@
             <tbody>
               <tr>
                 <th scope="row">{{ __('Number of Object') }}: </th>
-                <td><span>{{ $productLang->product->barcode }}</span></td>
+                <td><span>{{ $productLang->product->barcodes }}</span></td>
               </tr>
               <tr>
                 <th scope="row">{{ __('Region') }}: </th>
@@ -141,7 +141,6 @@
         </div>
       </div>
 
-
       <!-- Sidebar -->
       <div class="col-lg-4 col-md-5 sp-sidebar">
         <div class="sidebar sticky right">
@@ -155,7 +154,7 @@
                 <input type="name" name="name" id="name" placeholder="{{ __('Your Name') }}" required>
                 <input type="surname" name="surname" id="surname" class="hidden" placeholder="{{ __('Your Surname') }}">
                 <input type="tel" pattern="(\+?\d[- .]*){7,13}" name="phone" minlength="5" maxlength="20" placeholder="{{ __('Your Phone') }}" required>
-                <textarea name="message" autocomplete="off" required>{{ __('Text form') }} {{ $product->barcode }}]</textarea>
+                <textarea name="message" autocomplete="off" required>{{ __('Text form') }} {{ $productLang->product->barcodes }}]</textarea>
                 <button class="button fullwidth margin-top-5">{{ __('Send Message') }}</button>
               </form>
             </div>

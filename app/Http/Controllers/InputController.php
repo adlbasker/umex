@@ -103,19 +103,19 @@ class InputController extends Controller
                    "Content-type: text/html; charset=UTF-8" . "\r\n";
 
         // Send the email
-        if (mail('realty@umex.kz', $subject, $content, $headers)) {
-            $status = 'alert-success';
-            $message = 'Ваша заявка принята. Спасибо!';
-        }
-        else {
-            $status = 'alert-danger';
-            $message = 'Произошла ошибка.';
-        }
+        // if (mail('realty@umex.kz', $subject, $content, $headers)) {
+        //     $status = 'alert-success';
+        //     $message = 'Ваша заявка принята. Спасибо!';
+        // }
+        // else {
+        //     $status = 'alert-danger';
+        //     $message = 'Произошла ошибка.';
+        // }
 
         // dd($status, $message);
         return redirect()->back()->with([
-            'status' => $status,
-            'message' => $message
+            'status' => 'alert-success',
+            'message' => __('Thank you!')
         ]);
     }
 }

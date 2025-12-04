@@ -13,7 +13,7 @@
     <div class="col-md-9">
       <div class="panel panel-default">
         <div class="panel-body">
-          <form action="{{ route('posts.store', $lang) }}" method="post" enctype="multipart/form-data">
+          <form action="{{ route('posts.store', $lang) }}" method="post" id="postForm" enctype="multipart/form-data">
             {!! csrf_field() !!}
             <div class="form-group">
               <label for="title">Название</label>
@@ -43,20 +43,6 @@
             <div class="form-group">
               <label for="sort_id">Номер</label>
               <input type="text" class="form-control" id="sort_id" name="sort_id" maxlength="5" value="{{ (old('sort_id')) ? old('sort_id') : NULL }}">
-            </div>
-            <div class="form-group">
-              <label for="image">Картинка</label><br>
-              <div class="fileinput fileinput-new" data-provides="fileinput">
-                <div class="fileinput-preview thumbnail" style="width:100%;height:auto;" data-trigger="fileinput"></div>
-                <div>
-                  <span class="btn btn-default btn-sm btn-file">
-                    <span class="fileinput-new"><i class="glyphicon glyphicon-folder-open"></i>&nbsp; Выбрать</span>
-                    <span class="fileinput-exists"><i class="glyphicon glyphicon-folder-open"></i>&nbsp;</span>
-                    <input type="file" name="image" accept="image/*">
-                  </span>
-                  <a href="#" class="btn btn-default btn-sm fileinput-exists" data-dismiss="fileinput"><i class="glyphicon glyphicon-trash"></i> Удалить</a>
-                </div>
-              </div>
             </div>
             <div class="form-group">
               <label for="meta_title">Мета название (краткий заголовок, который отображается в результатах поиска)</label>
@@ -131,5 +117,11 @@
       minHeight: '300px'
     });
     editor.setDefaultStyle('font-family: Arial; font-size: 15px;');
+
+    const form = document.getElementById('postForm');
+
+    form.addEventListener('submit', function() {
+        editor.save();
+    });
   </script>
 @endsection

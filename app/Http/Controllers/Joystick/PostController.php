@@ -22,7 +22,7 @@ class PostController extends Controller
     {
         $this->authorize('viewAny', Post::class);
 
-        $posts = Post::orderBy('sort_id')->paginate(50);
+        $posts = Post::orderBy('updated_at', 'desc')->paginate(50);
 
         return view('joystick.posts.index', compact('posts'));
     }
@@ -41,8 +41,9 @@ class PostController extends Controller
         $this->authorize('create', Post::class);
 
         $this->validate($request, [
-            'title' => 'required|min:2|max:80|unique:posts',
-            'meta_title' => 'required|min:2',
+            'title' => 'required|min:2|max:150|unique:posts',
+            'meta_title' => 'required|min:50',
+            'content' => 'required|min:255'
         ]);
 
         $post = new Post;
@@ -96,8 +97,9 @@ class PostController extends Controller
     public function update(Request $request, $lang, $id)
     {       
         $this->validate($request, [
-            'title' => 'required|min:2|max:80',
-            'meta_title' => 'required|min:2',
+            'title' => 'required|min:2|max:150',
+            'meta_title' => 'required|min:50',
+            'content' => 'required|min:255',
         ]);
 
         $post = Post::findOrFail($id);

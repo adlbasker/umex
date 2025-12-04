@@ -13,7 +13,7 @@
     <div class="col-md-9">
       <div class="panel panel-default">
         <div class="panel-body">
-          <form action="{{ route('pages.update', [$lang, $page->id]) }}" method="post">
+          <form action="{{ route('pages.update', [$lang, $page->id]) }}" method="post" id="postForm">
             <input type="hidden" name="_method" value="PUT">
             {!! csrf_field() !!}
 
@@ -142,5 +142,11 @@
       minHeight: '300px'
     });
     editor.setDefaultStyle('font-family: Arial; font-size: 15px;');
+
+    const form = document.getElementById('postForm');
+
+    form.addEventListener('submit', function() {
+        editor.save();
+    });
   </script>
 @endsection
