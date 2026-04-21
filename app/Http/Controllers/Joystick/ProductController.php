@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Joystick;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -104,7 +105,9 @@ class ProductController extends Controller
         $introImage = NULL;
         $images = [];
 
-        Storage::makeDirectory('img/products/'.$dirName);
+        // Storage::makeDirectory('img/products/'.$dirName);
+
+        File::makeDirectory(public_path('img/products/'.$dirName), 0755, true, true);
 
         if ($request->hasFile('images')) {
             $images = $this->saveImages($request, $dirName);
@@ -191,7 +194,8 @@ class ProductController extends Controller
         if ($request->hasFile('images')) {
             if (! file_exists('img/products/'.$product->path) OR empty($product->path)) {
                 $dirName = $product->company->id.'/'.time();
-                Storage::makeDirectory('img/products/'.$dirName);
+                File::makeDirectory(public_path('img/products/'.$dirName), 0755, true, true);
+                // Storage::makeDirectory('img/products/'.$dirName);
                 $product->path = $dirName;
             }
 

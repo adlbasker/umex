@@ -7,13 +7,20 @@ use Intervention\Image\Drivers\Gd\Driver as GdDriver;
 
 trait ImageProcessor
 {
-    /**
-     * Создает и возвращает экземпляр ImageManager.
-     * @return ImageManager
-     */
+    private function getDestinationPath(string $path): string
+    {
+        $fullPath = public_path($path);
+        $directory = dirname($fullPath);
+
+        if (!is_dir($directory) && !mkdir($directory, 0755, true) && !is_dir($directory)) {
+            throw new \RuntimeException(sprintf('Directory "%s" was not created', $directory));
+        }
+
+        return $fullPath;
+    }
+
     private function getImageManager(): ImageManager
     {
-        // Создаем новый менеджер изображений для v3
         return new ImageManager(new GdDriver);
     }
 
@@ -22,21 +29,22 @@ trait ImageProcessor
         $manager = $this->getImageManager();
         $newImage = $manager->read($image);
 
-        // Создание пустого холста/рамки (v2: Image::canvas())
+        // Масштабируем и обрезаем по центру, чтобы картинка заполнила все $width и $height
+        $newImage->cover($width, $height);
+
         $frame = $manager->create($width, $height);
         $frame->fill($color);
-        
-        if ($newImage->width() <= $newImage->height() && $newImage->height() >= $height) {
-            $newImage->scale(height: $height); 
-        } elseif ($newImage->width() >= $width) {
-            $newImage->scale(width: $width);
-        }
-
-        if ($newImage->width() > $width || $newImage->height() > $height) {
-            $newImage->crop($width, $height);
-        }
-
         $frame->place($newImage, 'center');
+
+        // if ($newImage->width() <= $newImage->height() && $newImage->height() >= $height) {
+        //     $newImage->scale(height: $height); 
+        // } elseif ($newImage->width() >= $width) {
+        //     $newImage->scale(width: $width);
+        // }
+
+        // if ($newImage->width() > $width || $newImage->height() > $height) {
+        //     $newImage->crop($width, $height);
+        // }
 
         if ($watermark != null) {
             $watermarkImage = $manager->read($watermark);
@@ -44,50 +52,46 @@ trait ImageProcessor
             $frame->place($watermarkImage, 'bottom-left', 65, 65);
         }
 
-        // 7. Сохранение (v3: качество передается в массиве опций)
-        $frame->save(public_path() . $path, [
+        $frame->save($this->getDestinationPath($path), [
             'quality' => $quality,
-            'permissions' => 0644
+            // 'permissions' => 0755
         ]);
     }
 
-    public function resizeOptimalImage($image, int $width, int $height, string $path, int $quality, $watermark = null, string $color = '#ffffff'): void
+    public function resizeOptimalImage($image, $width = null, $height = null, string $path, int $quality, $watermark = null, string $color = '#ffffff'): void
     {
         $manager = $this->getImageManager();
         $newImage = $manager->read($image);
 
-        $frame = $manager->create($width, $height);
-        $frame->fill($color);
-        
-        // if ($newImage->width() > $newImage->height()) {
-        //     $newImage->scale(height: $height);
-        // } elseif ($newImage->width() < $newImage->height()) {
-        //     $newImage->scale(width: $width);
-        // }
+        if ($width !== null && $height === null) {
+            $newImage->scale(width: $width);
+        }
+        elseif ($height !== null && $width === null) {
+            $newImage->scale(height: $height);
+        }
+        elseif ($width !== null && $height !== null) {
+            $newImage->cover($width, $height);
+        }
 
-        // $newImage->crop($width, $height);
-        $newImage->cover($width, $height);
         $newImage->rotate(0);
 
+        $frame = $manager->create($newImage->width(), $newImage->height());
+        $frame->fill($color);
+
         $frame->place($newImage, 'center');
- 
+
         if ($watermark != null) {
             $watermarkImage = $manager->read($watermark);
             $frame->place($watermarkImage, 'bottom-left', 65, 65);
         }
 
-        // dd(public_path().$path);
-
-        $frame->save(public_path($path), [
+        $frame->save($this->getDestinationPath($path), [
             'quality' => $quality,
-            'permissions' => 0644
+            // 'permissions' => 0755
         ]);
-        
-        // Примечание: В v3 этот эффект (масштабирование для заполнения с последующей обрезкой)
-        // можно достичь одной командой $newImage->cover($width, $height);
     }
 
-    public function cropImage($image, int $width, int $height, string $path, int $quality): void
+    public function cropImage($image, $width = null, $height = null, string $path, int $quality): void
     {
         $newImage = $this->getImageManager->read($image);
 
@@ -95,7 +99,7 @@ trait ImageProcessor
             $newImage->crop($width, $height);
         }
 
-        $newImage->save(public_path() . $path, [
+        $newImage->save(public_path($path), [
             'quality' => $quality
         ]);
     }
