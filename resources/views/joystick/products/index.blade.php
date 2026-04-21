@@ -1,7 +1,7 @@
 @extends('joystick.layout')
 
 @section('content')
-  <h2 class="page-header">Продукты @if (isset($category)) - {{ $category->title }} @endif</h2>
+  <h2 class="page-header">Объекты @if (isset($category)) - {{ $category->title }} @endif</h2>
 
   @include('components.alerts')
 

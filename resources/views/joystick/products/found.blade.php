@@ -1,7 +1,7 @@
 @extends('joystick.layout')
 
 @section('content')
-  <h2 class="page-header">Продукты</h2>
+  <h2 class="page-header">Объекты</h2>
 
   <h3>Поиск по запросу <b>"{{ $text }}"</b></h3>
 
