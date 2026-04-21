@@ -28,7 +28,7 @@ class ProductController extends Controller
     {
         $this->authorize('viewAny', Product::class);
 
-        $products = Product::orderBy('updated_at','desc')->paginate(50);
+        $products = Product::orderBy('created_at','desc')->paginate(50);
         $categories = Category::get()->toTree();
         $modes = Mode::all();
 
