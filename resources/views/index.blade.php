@@ -143,7 +143,7 @@
               <a href="/{{ $lang }}/p/{{ $productLang->slug }}" class="listing-img-container">
                 <div itemprop="description" class="listing-badges">
                   <span class="featured">{{ $modeTitles[$lang]['title'] }}</span>
-                  <span>{{ trans('statuses.condition.'.$product->condition) }}</span>
+                  <span>{{ __('statuses.condition.'.$product->condition) }}</span>
                 </div>
                 <div class="listing-img-content">
                   <span class="listing-price">{{ number_format($productLang->price_total, 0, ' ', ' ') }}₸</span>

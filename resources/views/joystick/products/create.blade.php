@@ -63,20 +63,20 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="area">Площадь (участок)</label>
-                  <input type="text" class="form-control" id="area" name="area" maxlength="10" value="{{ (old('area')) ? old('area') : '' }}">
+                  <input type="text" class="form-control" id="area" name="area" value="{{ (old('area')) ? old('area') : '' }}">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="area_total">Площадь (общая)</label>
-                  <input type="text" class="form-control" id="area_total" name="area_total" maxlength="10" value="{{ (old('area_total')) ? old('area_total') : '' }}">
+                  <input type="text" class="form-control" id="area_total" name="area_total" value="{{ (old('area_total')) ? old('area_total') : '' }}">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="price">Цена за кв. м.</label>
                   <div class="input-group">
-                    <input type="text" class="form-control" id="price" name="price" maxlength="10" value="{{ (old('price')) ? old('price') : '' }}">
+                    <input type="text" class="form-control" id="price" name="price" value="{{ (old('price')) ? old('price') : '' }}">
                     <div class="input-group-addon">{{ $currency->symbol }}</div>
                   </div>
                 </div>
@@ -85,7 +85,7 @@
                 <div class="form-group">
                   <label for="price_total">Цена (общая)</label>
                   <div class="input-group">
-                    <input type="text" class="form-control" id="price_total" name="price_total" maxlength="10" value="{{ (old('price_total')) ? old('price_total') : '' }}">
+                    <input type="text" class="form-control" id="price_total" name="price_total" value="{{ (old('price_total')) ? old('price_total') : '' }}">
                     <div class="input-group-addon">{{ $currency->symbol }}</div>
                   </div>
                 </div>
@@ -128,7 +128,7 @@
               <label for="lang">Язык</label>
               <select id="lang" name="lang" class="form-control" required>
                 @foreach($languages as $language)
-                  @if (old('lang') == $language->slug)
+                  @if (app()->getLocale() == $language->slug)
                     <option value="{{ $language->slug }}" selected>{{ $language->title }}</option>
                   @else
                     <option value="{{ $language->slug }}">{{ $language->title }}</option>
