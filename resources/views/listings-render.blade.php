@@ -9,7 +9,7 @@
             <span class="listing-price">{{ number_format($productLang->price_total, 0, ' ', ' ') }}₸</span>
             <span class="like-icon with-tip" data-tip-content="Add to Bookmarks"></span>
           </div>
-          <img src="/img/products/{{ $productLang->product->path.'/'.$productLang->product->image }}" alt="{{ $productLang->title }}">
+          <img src="/img/products/{{ ($productLang->$product->image == 'no-image-middle.png') ? 'no-image-mini.png' : $productLang->$product->path.'/'.$productLang->$product->image }}" alt="{{ $productLang->title }}">
         </a>
 
         <div class="listing-content">

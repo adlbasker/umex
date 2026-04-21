@@ -128,7 +128,7 @@ $roomsId = $_GET['rooms'] ?? 0;
               <div class="listing-img-content">
                 <span class="listing-price">{{ number_format($productLang->price_total, 0, ' ', ' ') }}₸</span>
               </div>
-              <img src="/img/products/{{ $product->path.'/'.$product->image }}" alt="{{ $product->title }}">
+              <img src="/img/products/{{ ($product->image == 'no-image-middle.png') ? 'no-image-mini.png' : $product->path.'/'.$product->image }}" alt="{{ $product->title }}">
             </a>
 
             <div class="listing-content">
