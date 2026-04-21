@@ -145,7 +145,7 @@ class ProductController extends Controller
         $productLang->meta_title = $request->meta_title;
         $productLang->meta_description = $request->meta_description;
         $productLang->price = $request->price;
-        $productLang->price_total = $request->price_total;
+        $productLang->price_total = str_replace(' ', '', $request->price_total);
         $productLang->description = $request->description;
         $productLang->characteristic = $request->characteristic;
         $productLang->lang = $request->lang;
@@ -250,7 +250,7 @@ class ProductController extends Controller
         $productLang->meta_title = $request->meta_title;
         $productLang->meta_description = $request->meta_description;
         $productLang->price = $request->price;
-        $productLang->price_total = $request->price_total;
+        $productLang->price_total = str_replace(' ', '', $request->price_total);
         $productLang->description = $request->description;
         $productLang->characteristic = (isset($request->characteristic)) ? $request->characteristic : '';
         $productLang->lang = $request->lang;
