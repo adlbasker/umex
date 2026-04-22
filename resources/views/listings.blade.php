@@ -133,7 +133,7 @@ $roomsId = $_GET['rooms'] ?? 0;
 
             <div class="listing-content">
               <div class="listing-title">
-                <h4><a href="/{{ $lang }}/p/{{ $productLang->slug }}">{{ $product->title }}</a></h4>
+                <h4><a href="/{{ $lang }}/p/{{ $productLang->slug }}">{{ $productLang->title }}</a></h4>
                 <a href="#" class="listing-address popup-gmaps">
                   <i class="fa fa-map-marker"></i>
                   @if ($productLang->category_id != 0) {{ $productLang->category->title }}, @endif
