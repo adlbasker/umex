@@ -132,7 +132,7 @@
           <!-- Description -->
           @if ($productLang->description != NULL)
             <h3 class="desc-headline">{{ __('Description') }}</h3>
-            {!! $productLang->description !!}
+            {!! nl2br(e($productLang->description)) !!}
             <!-- <div class="show-more">
               <a href="#" class="show-more-button">{{ __('Show More') }} <i class="fa fa-angle-down"></i></a>
             </div> -->

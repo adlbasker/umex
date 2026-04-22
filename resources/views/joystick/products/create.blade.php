@@ -216,44 +216,10 @@
 
 @section('head')
   <link href="/joystick/css/jasny-bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/css/suneditor.min.css" rel="stylesheet">
 @endsection
 
 @section('scripts')
   <script src="/joystick/js/jasny-bootstrap.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/suneditor.min.js"></script>
-  <script>
-    // ID or DOM object
-    const editor = SUNEDITOR.create((document.getElementById('editor') || 'editor'),{
-      // All of the plugins are loaded in the "window.SUNEDITOR" object in dist/suneditor.min.js file
-      // Insert options
-      buttonList: [
-        ['undo', 'redo'],
-        ['font', 'fontSize', 'formatBlock'],
-        ['paragraphStyle', 'blockquote'],
-        ['bold', 'underline', 'italic', 'strike', 'subscript', 'superscript'],
-        ['fontColor', 'hiliteColor', 'textStyle', 'removeFormat'],
-        ['outdent', 'indent'],
-        ['align', 'horizontalRule', 'list', 'lineHeight'],
-        ['table', 'link', 'image', 'video', 'audio' /** ,'math' */], // You must add the 'katex' library at options to use the 'math' plugin.
-        // ['imageGallery'],  // You must add the "imageGalleryUrl".
-        ['fullScreen', 'showBlocks', 'codeView'],
-        ['preview', 'print'],
-        ['save', 'template'],
-        /** ['dir', 'dir_ltr', 'dir_rtl'] */ // "dir": Toggle text direction, "dir_ltr": Right to Left, "dir_rtl": Left to Right
-      ]
-    });
-    editor.setOptions({
-      minHeight: '300px'
-    });
-    editor.setDefaultStyle('font-family: Arial; font-size: 15px;');
-
-    const form = document.getElementById('postForm');
-
-    form.addEventListener('submit', function() {
-        editor.save();
-    });
-  </script>
   <script>
     function addFileinput(i) {
       var fileinput = 
