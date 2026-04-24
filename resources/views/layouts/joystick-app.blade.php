@@ -57,7 +57,8 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 main">
+          <br>
           @yield('content')
         </div>
       </div>
