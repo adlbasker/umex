@@ -51,7 +51,7 @@
             </div>
             <div class="form-group">
               <label for="characteristic">Адрес</label>
-              <input type="text" class="form-control" id="characteristic" name="characteristic" minlength="2" maxlength="80" value="{{ (old('characteristic')) ? old('characteristic') : $productLang->characteristic }}">
+              <input type="text" class="form-control" id="characteristic" name="characteristic" minlength="2" value="{{ (old('characteristic')) ? old('characteristic') : $productLang->characteristic }}">
             </div>
             <div class="form-group">
               <label for="sort_id">Номер</label>

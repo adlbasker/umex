@@ -283,7 +283,7 @@ class ProductController extends Controller
 
             // Storing original images
             // $image->storeAs('/img/products/'.$dirName, $imageName);
-            $this->resizeOptimalImage($image, 1200, 800, '/img/products/'.$dirName.'/'.$imageName, 90, 'img/watermark.png');
+            $this->resizeOptimalImage($image, 1200, 900, '/img/products/'.$dirName.'/'.$imageName, 90, 'img/watermark.png');
 
             $images[$key]['image'] = $imageName;
             $images[$key]['present_image'] = 'present-'.$imageName;
@@ -306,7 +306,7 @@ class ProductController extends Controller
             $this->resizeOptimalImage($image, 520, 400, '/img/products/'.$dirName.'/present-'.$imageName, 90);
 
             // Storing original images
-            $this->resizeOptimalImage($image, 1200, 800, '/img/products/'.$dirName.'/'.$imageName, 90, 'img/watermark.png');
+            $this->resizeOptimalImage($image, 1200, 900, '/img/products/'.$dirName.'/'.$imageName, 90, 'img/watermark.png');
 
             if (isset($images[$key])) {
                 Storage::delete([

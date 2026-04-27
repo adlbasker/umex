@@ -100,17 +100,6 @@
           </div>
 
           <div class="right-side">
-            <!-- <div class="user-menu-container header-widget">
-              <div class="user-menu">
-                <div class="user-name"><i class="sl sl-icon-call-in"></i> +7 (727) 313 10 60</div>
-                <ul class="text-nowrap">
-                  <li><a href="#">+7 (727) 313 10 60</a></li>
-                  <li><a href="#">+7 (727) 313 10 55</a></li>
-                  <li><a href="#">+7 (727) 272 57 57</a></li>
-                  <li><a href="#">(EN) +7 707 599 00 93</a></li>
-                </ul>
-              </div>
-            </div> -->
             <!-- <div class="header-widget">
               <a href="login-register.html" class="sign-in"><i class="fa fa-user"></i> Log In / Register</a>
             </div> -->
@@ -139,7 +128,7 @@
         </li>
         <li class="option">
           <button class="material-button option3 bg-ripple" type="button">
-            <a href="tel:{{ $phones[0] }}" target="_blank"><span class="fa fa-phone" aria-hidden="true"></span></a>
+            <a href="tel:{{ $phones[1] }}" target="_blank"><span class="fa fa-phone" aria-hidden="true"></span></a>
           </button>
         </li>
         <li class="option">

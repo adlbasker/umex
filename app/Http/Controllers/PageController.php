@@ -37,7 +37,7 @@ class PageController extends Controller
         $options = Option::get();
 
         $typeId = $request->type;
-        $query = Product::orderByDesc('created_at')->when($request->type > 0, function($queryType) use ($typeId) {
+        $query = Product::orderByDesc('created_at')->where('status', '<>', 0)->when($request->type > 0, function($queryType) use ($typeId) {
             $queryType->where('condition', $typeId);
           });
 
